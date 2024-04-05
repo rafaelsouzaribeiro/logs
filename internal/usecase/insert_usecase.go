@@ -1,18 +1,9 @@
 package usecase
 
 import (
-	"time"
-
 	"github.com/rafaelsouzaribeiro/logs/internal/entity"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"github.com/rafaelsouzaribeiro/logs/internal/usecase/dto"
 )
-
-type Log_KafkaInputDTO struct {
-	ID        primitive.ObjectID `json:"_id"`
-	Topic     string             `json:"topic"`
-	Message   string             `json:"message"`
-	CreatedAt time.Time          `json:"createdAt"`
-}
 
 func NewOrderUseCase(repository entity.LogsInterfaceRepository) *LogsUseCase {
 	return &LogsUseCase{
@@ -20,7 +11,7 @@ func NewOrderUseCase(repository entity.LogsInterfaceRepository) *LogsUseCase {
 	}
 }
 
-func (o *LogsUseCase) Save(data Log_KafkaInputDTO) error {
+func (o *LogsUseCase) Save(data dto.Log_KafkaInputDTO) error {
 	rs := entity.NewLogKafka(data.Topic, data.Message, data.CreatedAt)
 
 	_, err := o.repository.Insert(*rs)

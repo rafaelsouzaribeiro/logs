@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type Log_KafkaOuput struct {
+type Log_KafkaInputDTO struct {
 	ID        primitive.ObjectID `json:"_id"`
 	Topic     string             `json:"topic"`
 	Message   string             `json:"message"`
