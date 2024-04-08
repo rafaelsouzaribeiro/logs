@@ -2,16 +2,17 @@ package utils
 
 import (
 	"fmt"
-	"os"
 	"time"
 
 	"github.com/rafaelsouzaribeiro/logs/internal/infra/database/connection"
 	"github.com/rafaelsouzaribeiro/logs/internal/infra/di"
 	"github.com/rafaelsouzaribeiro/logs/internal/usecase/dto"
+	"github.com/spf13/viper"
 )
 
 func Insert(topic, message string, createdAt time.Time) {
-	DB_HOST := os.Getenv("DB_HOST")
+	//DB_HOST := os.Getenv("DB_HOST")
+	DB_HOST := viper.GetString("DB_HOST")
 
 	if DB_HOST == "" {
 		fmt.Println("Error: DB_HOST environment variable is not set.")
