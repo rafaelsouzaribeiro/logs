@@ -1,8 +1,9 @@
 package usecase
 
 import (
+	"time"
+
 	"github.com/rafaelsouzaribeiro/logs/internal/entity"
-	"github.com/rafaelsouzaribeiro/logs/internal/usecase/dto"
 )
 
 func NewOrderUseCase(repository entity.LogsInterfaceRepository) *LogsUseCase {
@@ -11,8 +12,8 @@ func NewOrderUseCase(repository entity.LogsInterfaceRepository) *LogsUseCase {
 	}
 }
 
-func (o *LogsUseCase) Save(data dto.Log_KafkaInputDTO) error {
-	rs := entity.NewLogKafka(data.Topic, data.Message, data.CreatedAt)
+func (o *LogsUseCase) Save(Topic string, Message string, CreatedAt time.Time) error {
+	rs := entity.NewLogKafka(Topic, Message, CreatedAt)
 
 	_, err := o.repository.Insert(*rs)
 

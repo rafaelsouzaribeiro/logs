@@ -6,7 +6,6 @@ import (
 
 	"github.com/rafaelsouzaribeiro/logs/internal/infra/database/connection"
 	"github.com/rafaelsouzaribeiro/logs/internal/infra/di"
-	"github.com/rafaelsouzaribeiro/logs/internal/usecase/dto"
 	"github.com/spf13/viper"
 )
 
@@ -26,9 +25,5 @@ func Insert(topic, message string, createdAt time.Time) {
 	}
 
 	insert := di.NewLogUseCase(db)
-	insert.Save(dto.Log_KafkaInputDTO{
-		Topic:     topic,
-		Message:   message,
-		CreatedAt: createdAt,
-	})
+	insert.Save(topic, message, createdAt)
 }
