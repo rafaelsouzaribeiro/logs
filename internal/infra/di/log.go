@@ -1,7 +1,7 @@
 package di
 
 import (
-	"github.com/rafaelsouzaribeiro/logs/internal/infra/database"
+	database "github.com/rafaelsouzaribeiro/logs/internal/infra/database/mongo/repository"
 	"github.com/rafaelsouzaribeiro/logs/internal/infra/enum"
 	"github.com/rafaelsouzaribeiro/logs/internal/usecase"
 	"go.mongodb.org/mongo-driver/mongo"

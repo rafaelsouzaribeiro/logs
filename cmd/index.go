@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/rafaelsouzaribeiro/logs/internal/infra/database/connection"
+	"github.com/rafaelsouzaribeiro/logs/internal/infra/database/mongo/connection"
 	"github.com/rafaelsouzaribeiro/logs/internal/infra/di"
 	"github.com/spf13/viper"
 )
