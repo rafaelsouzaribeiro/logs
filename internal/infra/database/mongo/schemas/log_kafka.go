@@ -1,4 +1,4 @@
-package entity
+package schemas
 
 import (
 	"time"
